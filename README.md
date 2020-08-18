@@ -69,7 +69,7 @@ The parts were designed with Google SketchUp. I used a plugin to export the STL 
 
 # Warning
 
-The servo horn spline I have here is bad, they slip. I traced/made my own from a photo I took. I ended up having to use long screws and super glue to try and make them not slip. Also the design is generally bad where the servos are directly holding the load vs. just transfering motion. And overally the design is bad as I mentioned with how it can move. I think you need more servos but it's nuts thinking each leg would have at least 3 servos and a true hexapod would have 18 servos right there.
+The servo horn spline I have here is bad, they slip. I traced/made my own from a photo I took. I ended up having to use long screws and super glue to try and make them not slip. Also the design is generally bad where the servos are directly holding the load vs. just transfering motion. And overall the design is bad as I mentioned with how it can move. I think you need more servos but it's nuts thinking each leg would have at least 3 servos and a true hexapod would have 18 servos right there.
 
 # Thoughts
 
