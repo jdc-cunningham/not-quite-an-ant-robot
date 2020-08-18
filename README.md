@@ -39,7 +39,7 @@ Here the servos are not moving very fast(`10ms delay`) and a 2 second overally d
 - breadboards
 - breadboard wires
 - 3D printer/filament
-- hot glue
+- hot/super glue
 
 # Feature Completion
 
