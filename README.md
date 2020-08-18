@@ -19,7 +19,7 @@ While I did design the legs like this(back set not mirrored), they are actually 
 
 ![current build side](./side-view--slow-gait.gif)
 
-It has a middle servo pretty much for balance, when it moves forward the middle servo lifts up the middle legs. Anyway with this design as a result I can't do the tripod-gait, I have some kind of wave gait going on. It is nuts how much current all the servos pull. I had to use a 2A wall power supply and hardly any of my batteries would work(too heavy/not enough current).
+It has a middle servo pretty much for balance, when it moves forward the middle servo lifts up the middle legs. Anyway with this design as a result I can't do the full tripod-gait, I have some type of modified trypod gait going on. Initially I had a wave-type gait going, where one leg moved at a time but I think that's too slow. It is nuts how much current all the servos pull. I had to use a 2A wall power supply and hardly any of my batteries would work(too heavy/not enough current).
 
 ![current build back view](./initial-walking--back-view.gif)
 
