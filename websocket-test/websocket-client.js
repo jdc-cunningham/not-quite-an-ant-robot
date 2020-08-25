@@ -7,7 +7,7 @@ ws.on('open', function open() {
     console.log('connected');
 
     const motions = ['F', 'L', 'F', 'L', 'F', 'L', 'F'];
-    const maxMoveCounter = 12;
+    const maxMoveCounter = 6;
     let curCounter = 0;
     let curMotionIndex = 0;
 
@@ -26,7 +26,7 @@ ws.on('open', function open() {
             curCounter = 0;
         }
         curCounter +=1;
-    }, 250);
+    }, 500);
 });
 
 ws.on('message', function incoming(data) {
