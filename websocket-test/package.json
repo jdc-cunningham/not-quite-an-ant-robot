@@ -1,0 +1,14 @@
+{
+  "name": "websocket-test",
+  "version": "1.0.0",
+  "description": "simple websocket for communication to ESP01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob David C. Cunningham",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.3.1"
+  }
+}

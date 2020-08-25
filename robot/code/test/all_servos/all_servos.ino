@@ -10,7 +10,9 @@
  *
  */
 
+#include <SoftwareSerial.h>
 #include <Servo.h>
+SoftwareSerial ESPserial(2, 3); // rx tx
 Servo frontRightInnerServo;
 Servo frontRightOuterServo;
 Servo frontLeftInnerServo;
@@ -21,128 +23,79 @@ Servo backLeftInnerServo;
 Servo backLeftOuterServo;
 Servo middleServo;
 
-int servoMotionDelay = 10; // how fast the servo moves a deg in ms
-
-void setAndCenterServos() {
-  // set servo pins
-  frontRightInnerServo.attach(8);
-  frontRightOuterServo.attach(9);
-  frontLeftInnerServo.attach(6);
-  frontLeftOuterServo.attach(7);
-  backRightInnerServo.attach(10);
-  backRightOuterServo.attach(11);
-  backLeftInnerServo.attach(4);
-  backLeftOuterServo.attach(5);
-  middleServo.attach(12);
-
-  // set initial positions
-  // TODO auto zero/level based on IMU
-  frontRightInnerServo.write(90);
-  frontRightOuterServo.write(110);
-  frontLeftInnerServo.write(90);
-  frontLeftOuterServo.write(60);
-  backRightInnerServo.write(130);
-  backRightOuterServo.write(110);
-  backLeftInnerServo.write(65);
-  backLeftOuterServo.write(40);
-  middleServo.write(55);
-}
-
-// slow motion
-void servoMotion(Servo servo, int initPos, int endingPos, int motionDelay) {
-  int pos = 0;
-  bool decrease = initPos > endingPos;
-
-  if (decrease) {
-    for (pos = initPos; pos > endingPos; pos -= 1) {
-      servo.write(pos);
-      delay(motionDelay);
-    }
-  } else {
-    for (pos = initPos; pos < endingPos; pos += 1) {
-      servo.write(pos);
-      delay(motionDelay);
-    }
-  }
-}
-
-//void servoMotionMulti(int commArr[][]) {
-//  
-//}
-
-void liftRightLegs() {
-  // front right
-  servoMotion(frontRightOuterServo, 110, 60, servoMotionDelay); // raise leg
-//  servoMotion(frontRightInnerServo, 80, 50, servoMotionDelay); // swing forward
-//  servoMotion(frontRightOuterServo, 60, 100, servoMotionDelay); // lower leg
-
-  // back left
-  servoMotion(backLeftOuterServo, 40, 90, servoMotionDelay); // lift up
-//  servoMotion(backLeftInnerServo, 65, 105, servoMotionDelay); // swing forward
-//  servoMotion(backLeftOuterServo, 90, 60, servoMotionDelay); // lower
-}
-
-void moveForwardHalfRight() {
-  int pos1[2] = {90, 60};
-  int pos2[2] = {65, 95};
-
-  int pos = 0;
-  for (pos = 0; pos < 30; pos += 1) { // largest difference
-    Serial.println(pos);
-    // lazy way
-    if (pos1[0] - pos > pos1[1]) {
-      frontRightInnerServo.write(pos1[0] - pos);
-    }
-    if (pos2[0] + pos < pos2[1]) {
-      backLeftInnerServo.write(pos2[0] + pos);
-    }
-    delay(servoMotionDelay);
-  }
-}
-
-void moveAllForward() {
-//  int pos1[2] = {50, 80};
-//  int pos2[2] = {105, 65};
-//  int pos3[2] = {125, 100};
-//  int pos4[2] = {85, 130};
-//
-//  int pos = 0;
-//  for (pos = 0; pos < 45; pos += 1) { // largest difference
-//    Serial.println(pos);
-//    // lazy way
-//    if (pos1[0] + pos < pos1[1]) {
-//      frontRightInnerServo.write(pos1[0] + pos);
-//    }
-//    if (pos2[0] - pos > pos2[1]) {
-//      backLeftInnerServo.write(pos2[0] - pos);
-//    }
-//    if (pos3[0] - pos > pos3[1]) {
-//      frontLeftInnerServo.write(pos3[0] - pos);
-//    }
-//    if (pos4[0] + pos < pos4[1]) {
-//      backRightInnerServo.write(pos4[0] + pos);
-//    }
-//    delay(servoMotionDelay);
-//  }
-}
+int servoMotionDelay = 8; // how fast the servo moves a deg in ms
 
 void setup() {
-  Serial.begin(115200);
   setAndCenterServos();
-  delay(500);
-//   moveForward();
-//  liftRightLegs();
-//  moveForwardHalfRight();
-//  lowerRightLegs();
-//  liftLeftLegs();
-//  moveForwardHalfLeft();
-//  liftMiddleLegs();
-//  moveAllForward();
-//  lowerMiddleLegs();
+  Serial.begin(115200);
+  ESPserial.begin(115200);
 }
 
+String commandStr;
+int appendCounter = 0;
+bool commandMatch = false;
+bool motionInProgress = false;
+String commIntRange = "23456789";
+
 void loop() {
-  // put your main code here, to run repeatedly:
-  moveForwardAlt();
-  delay(2000);
+  /**
+  * current commands:
+  * F - forward
+  * L - rotate left
+  * R - rotate right
+  * B - backwards
+  * # - set speed of servo eg. ms delay per degree rotation
+  * Software Serial is not reliable at 115200, even checking 2 characters has too many errors
+  */
+  while (ESPserial.available()) {
+    char c = ESPserial.read();
+    commandStr += c;
+    appendCounter += 1;
+
+    Serial.println(commandStr);
+
+    if (appendCounter > 1) {
+      commandStr = "";
+      appendCounter = 0;
+    } else {
+      if (commandStr.indexOf("F") > -1 && !motionInProgress) {
+        commandMatch = true;
+        moveForward();
+      } else if (commandStr.indexOf("L") > -1 && !motionInProgress) {
+        commandMatch = true;
+        rotateLeft();
+      } else if (commandStr.indexOf("R") > -1 && !motionInProgress) {
+        commandMatch = true;
+        rotateRight();
+      } else if (commandStr.indexOf("B") > -1 && !motionInProgress) {
+        commandMatch = true;
+        moveBackward();
+      } else if (commIntRange.indexOf(commandStr) > -1) {
+         // 2 is really fast relatively, and anything above 10 is really slow
+        if (commandStr.toInt() >= 2 && commandStr.toInt() < 10) { // should go up to 10 but 1 char is easier to check
+          servoMotionDelay = commandStr.toInt();
+        }
+      }
+
+      if (commandMatch) {
+        commandStr = "";
+        appendCounter = 0;
+        commandMatch = false;
+      }
+    }
+  }
+
+  // manual motion test code on stand
+
+  // delay(1);
+
+  // moveForward();
+  // moveAllLegsBackward();
+  // moveBackward();
+  // setAndCenterServos();
+  // rotateLeft();
+  // rotateRight();
+  // swayLeft();
+
+  // delay(60000);
 }
