@@ -119,7 +119,7 @@ void moveServos(int servoGroupArr[][3], int servoGroupArrLen, int motionDuration
   /**
    * loop through servos, find largest range between start/end pos
    * there is no error checking, I find coding in Arduino to be cumbersome */
-  ESPserial.read();
+  clearEspSerial(); // buffer
   motionInProgress = true;
   int largestServoRange = 0;
 
