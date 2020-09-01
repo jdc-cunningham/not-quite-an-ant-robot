@@ -41,11 +41,12 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 
 # Parts list
 
-- 9g servo x9
+- 9g servo (x9)
 - Arduino Nano
 - ESP8266-01
-- 5V linear regulator
-- 3.3V linear regulator x2
+- HC-SR04 ultrasonic sensor
+- 5V linear regulator or buck converter
+- 3.3V linear regulator (x2)
 - 10K resitor
 - UBEC for battery pack
 - 9.6v 8cell 2400mAh NiMh battery pack
@@ -64,13 +65,18 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 - [x] physical body
 - [x] basic socket to serial communication
 - [ ] rest of the gaits
-    - [ ] backwards
-    - [ ] sideways (crab)
-    - [ ] rotate
+    - [x] backwards
+    - [ ] sideways (crab) - attempt called sway in code
+        - doesn't really work(need to be on smooth surface)
+    - [x] rotate
     - [ ] roll
-- [ ] mobile controller
+        - similar to crab walk, again problem of servos being weak
+- [x] mobile controller
+    - very basic design, spent like 2 hours
 - [ ] add IMU (9-axis)
-- [ ] add ultrasonic sensor on front
+    - not done on this robot, maybe added later assuming light enough
+- [x] add ultrasonic sensor on front
+    - current code intercepts commands and makes robot turn left if something is within 7" of front
 
 # Print times (0.2mm quality 20% infill)
 - 49 mins main servo mount for swivel arms
