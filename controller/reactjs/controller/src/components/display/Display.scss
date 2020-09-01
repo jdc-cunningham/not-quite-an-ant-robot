@@ -1,0 +1,11 @@
+.MobileController__display {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    border: 1px solid #282828;
+
+    &::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+}

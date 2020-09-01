@@ -1,0 +1,61 @@
+.MobileController__directional-pad {
+    position: relative;
+    width: calc(100% - 2em);
+    border: 1px solid #aaa;
+    margin: 1em;
+    margin-top: 2em;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-top: 100%;
+        pointer-events: none;
+    }
+}
+
+.directional-pad___arrow {
+    position: absolute;
+    display: block;
+    background-color: #aaa;
+    width: 50px;
+    height: 120px;
+    cursor: pointer;
+    z-index: 1;
+
+    &.active {
+        background-color: #333;
+    }
+
+    &.up {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    &.right {
+        right: 0;
+        top: 50%;
+        transform: translate(-35px, -50%) rotate(90deg);
+        transform-origin: top top;
+    }
+
+    &.down {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    &.left {
+        top: 50%;
+        left: 0;
+        transform: translate(35px, -50%) rotate(-90deg);
+        transform-origin: top top;
+    }
+
+    @media screen and (max-width: 400px) {
+        height: 80px;
+    }
+}
