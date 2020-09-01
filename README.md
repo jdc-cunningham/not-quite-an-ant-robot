@@ -5,9 +5,19 @@ This is not intended to be replicated, I mean all the parts are here and I'll pr
 
 This project has been in progress for at least a week, I don't have a repo history because I published my WiFi SSD credentials in the original private repo.
 
+# Status
+Pretty much done/abandoned since the body is too weak and dumb to do anything more. It has a run time I could venture to say up to 2.5 hrs on the specified specs but that's absolutely dry. I did a 30 minute non-stop run and it pulled about 500mAh from the battery. This is at 5.5V at the step down buck converter as I was trying to have the servos use around 4.8V. It seems to perform better here than 6V as it was initially. The next project I'm working on the hybrid sensor pack will weigh at least 6oz and I put an 8oz weight on top of the robot and it could not carry it... so that's why I'm kind of going to abandon this robot as is since it's a disappointment in terms of the build/no brain.
+
 # The vision/concept
 
 ![drawing of concept](./robot/sketches/concept.PNG)
+
+# Actual - not quite as I foresaw
+### Reasons being:
+- too slow to control manually, does not have 4 axis of motion only 2(forward/back, left/right)
+- telemetry would have been easy with what I'm doing and the embedded `WebGL` aspect would have been overkill as well as a little animation for the controller. Mostly though changing directions, this robot is too weak/stupid to be useful, I can't leave it alone to map a room without thinking it'll get stuck and burn a servo out.
+
+[![end result](./end-result.jpg)](https://youtu.be/18nqn2tWNEw?t=28)
 
 Later on it turns out that having a controller like this while cool is also not practical as the robot is so slow, I'll still build it but it'll be like a "heading hold" type of control.
 
@@ -24,6 +34,10 @@ It has a middle servo pretty much for balance, when it moves forward the middle 
 ![current build back view](./initial-walking--back-view.gif)
 
 Here the servos are not moving very fast(`10ms delay`) and a 2 second overally delay between the forward motion gait see [here](./robot/code/test/all_servos/all_servos.ino).
+
+## Note: it's not as slow as you see above
+
+The servo speed is just set slow there, [here it is near full speed](https://www.youtube.com/watch?v=y_KfgiUq9XE)
 
 # Parts list
 
