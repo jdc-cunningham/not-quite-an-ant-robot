@@ -23,12 +23,22 @@ Servo backLeftInnerServo;
 Servo backLeftOuterServo;
 Servo middleServo;
 
-int servoMotionDelay = 8; // how fast the servo moves a deg in ms
+int servoMotionDelay = 6; // how fast the servo moves a deg in ms
+int usSensorTrigPin = 13;
+int usSensorEchoPin = A0;
+int usSensorTravelDuration;
+int usSensorMeasuredDistance;
+int avoidRotateCounter = 0;
+bool avoidRotateDirectionLeft = true;
 
 void setup() {
   setAndCenterServos();
   Serial.begin(115200);
   ESPserial.begin(115200);
+
+  // setup ultrasonic sensor
+  pinMode(usSensorTrigPin, OUTPUT);
+  pinMode(usSensorEchoPin, INPUT);
 }
 
 String commandStr;
@@ -58,6 +68,12 @@ void loop() {
       commandStr = "";
       appendCounter = 0;
     } else {
+      usSensorPing();
+      if (obstacleDetected()) {
+        rotateLeft();
+        return;
+      }
+
       if (commandStr.indexOf("F") > -1 && !motionInProgress) {
         commandMatch = true;
         moveForward();
@@ -84,10 +100,6 @@ void loop() {
       }
     }
   }
-
-  // manual motion test code on stand
-
-  // delay(1);
 
   // moveForward();
   // moveAllLegsBackward();

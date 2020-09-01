@@ -55,6 +55,10 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 - 3D printer/filament
 - hot/super glue
 
+# Schematic
+
+![ms paint wiring diagram](./robot/schematic.png)
+
 # Feature Completion
 
 - [x] physical body
