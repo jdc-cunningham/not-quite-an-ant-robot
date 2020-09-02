@@ -41,20 +41,21 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 
 # Parts list
 
-- 9g servo (x9)
-- Arduino Nano
-- ESP8266-01
-- HC-SR04 ultrasonic sensor
-- 5V linear regulator or buck converter
-- 3.3V linear regulator (x2)
+- ($18.69 for 10) 9g servo (x9)
+- ($15.98 for 3) Arduino Nano
+- ($12.98 for 4) ESP8266-01
+- ($9.59 for 5) HC-SR04 ultrasonic sensor
+- ($12.99 for 5) 5V buck converter for battery (can use UBEC maybe linear regulator as well)
+- ($7.85 for 12) 3.3V linear regulator (x2)
 - 10K resitor
-- UBEC for battery pack
-- 9.6v 8cell 2400mAh NiMh battery pack
+- ($17.99) 9.6v 8cell 2400mAh NiMh battery pack
 - solderable breadboards
 - breadboards
 - breadboard wires
 - 3D printer/filament
 - hot/super glue
+
+## Total Unit cost estimate: $50.00 (not including tools eg. 3D printer($200))
 
 # Schematic
 
