@@ -55,7 +55,8 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 - 3D printer/filament
 - hot/super glue
 
-## Total Unit cost estimate: $50.00 (not including tools eg. 3D printer($200))
+## Total Unit cost estimate: $50.00
+(not including tools eg. 3D printer($200))
 
 # Schematic
 
