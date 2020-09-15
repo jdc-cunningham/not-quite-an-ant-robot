@@ -5,9 +5,9 @@ void setAndCenterServos() {
   frontLeftInnerServo.attach(6); // 3
   frontLeftOuterServo.attach(7); // 4
   backRightInnerServo.attach(10); // 5
-  backRightOuterServo.attach(11); // 6
+  backRightOuterServo.attach(5); // 6
   backLeftInnerServo.attach(4); // 7
-  backLeftOuterServo.attach(5); // 8
+  backLeftOuterServo.attach(11); // 8
   middleServo.attach(12); // 9
 
   // set initial positions
@@ -16,11 +16,11 @@ void setAndCenterServos() {
   frontRightOuterServo.write(110);
   frontLeftInnerServo.write(90);
   frontLeftOuterServo.write(60);
-  backRightInnerServo.write(130);
-  backRightOuterServo.write(110);
-  backLeftInnerServo.write(65);
-  backLeftOuterServo.write(40);
-  middleServo.write(55);
+  backRightInnerServo.write(115);
+  backRightOuterServo.write(40);
+  backLeftInnerServo.write(80);
+  backLeftOuterServo.write(110);
+  middleServo.write(45);
 }
 
 void servoMotion(Servo servo, int initPos, int endingPos, int motionDelay) {
@@ -53,9 +53,9 @@ void moveAllLegsForward() {
 
   int servoGroupArr[][3] = {
     {1, 50, 80},
-    {7, 105, 65},
+    {7, 105, 80},
     {3, 125, 100},
-    {5, 85, 130}
+    {5, 85, 115}
   };
  
   moveServos(
@@ -71,10 +71,10 @@ void moveAllLegsBackward() {
   liftMiddleLegs();
 
   int servoGroupArr[][3] = {
-    {1, 80, 50},
-    {7, 65, 105},
-    {3, 100, 125},
-    {5, 130, 85}
+    {1, 90, 60},
+    {7, 80, 105},
+    {3, 90, 115},
+    {5, 115, 85}
   };
  
   moveServos(
@@ -167,7 +167,7 @@ void moveForward() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr1[][3] = {
     {2, 110, 60},
-    {8, 40, 90}
+    {8, 110, 60}
   };
 
   moveServos(
@@ -178,8 +178,8 @@ void moveForward() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr2[][3] = {
-    {1, 80, 50},
-    {7, 65, 105}
+    {1, 90, 60},
+    {7, 80, 105}
   };
 
   moveServos(
@@ -191,7 +191,7 @@ void moveForward() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr3[][3] = {
     {2, 60, 110},
-    {8, 90, 40}
+    {8, 60, 110}
   };
   
   moveServos(
@@ -203,7 +203,7 @@ void moveForward() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr4[][3] = {
     {4, 60, 105},
-    {6, 110, 70}
+    {6, 40, 80}
   };
 
   moveServos(
@@ -214,8 +214,8 @@ void moveForward() {
   
   // front left, back right - inner servos (swivel)
   int servoGroupArr5[][3] = {
-    {3, 100, 125},
-    {5, 130, 85}
+    {3, 90, 115},
+    {5, 115, 85}
   };
 
   moveServos(
@@ -227,7 +227,7 @@ void moveForward() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr6[][3] = {
     {4, 105, 60},
-    {6, 70, 110}
+    {6, 80, 40}
   };
 
   moveServos(
@@ -243,7 +243,7 @@ void moveBackward() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr1[][3] = {
     {2, 110, 60},
-    {8, 40, 90}
+    {8, 110, 60}
   };
 
   moveServos(
@@ -254,8 +254,8 @@ void moveBackward() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr2[][3] = {
-    {1, 50, 80},
-    {7, 105, 65}
+    {1, 60, 90},
+    {7, 105, 80}
   };
 
   moveServos(
@@ -267,7 +267,7 @@ void moveBackward() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr3[][3] = {
     {2, 60, 110},
-    {8, 90, 40}
+    {8, 60, 110}
   };
   
   moveServos(
@@ -279,7 +279,7 @@ void moveBackward() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr4[][3] = {
     {4, 60, 105},
-    {6, 110, 70}
+    {6, 40, 80}
   };
 
   moveServos(
@@ -290,7 +290,7 @@ void moveBackward() {
   
   // front left, back right - inner servos (swivel)
   int servoGroupArr5[][3] = {
-    {3, 125, 100},
+    {3, 115, 90},
     {5, 85, 135}
   };
 
@@ -303,7 +303,7 @@ void moveBackward() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr6[][3] = {
     {4, 105, 60},
-    {6, 70, 110}
+    {6, 80, 40}
   };
 
   moveServos(
@@ -320,10 +320,10 @@ void rotateAllLegsRight() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr[][3] = {
-    {1, 50, 80},
-    {7, 25, 65},
-    {3, 75, 100},
-    {5, 85, 130}
+    {1, 60, 90},
+    {7, 25, 80},
+    {3, 65, 90},
+    {5, 85, 115}
   };
 
   moveServos(
@@ -339,7 +339,7 @@ void rotateLeft() {
   // ront right, back left - outer servos (pitch)
   int servoGroupArr1[][3] = {
     {2, 110, 60},
-    {8, 40, 90}
+    {8, 110, 60}
   };
 
   moveServos(
@@ -350,8 +350,8 @@ void rotateLeft() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr2[][3] = {
-    {1, 80, 50},
-    {7, 65, 25}
+    {1, 90, 60},
+    {7, 80, 25}
   };
 
   moveServos(
@@ -363,7 +363,7 @@ void rotateLeft() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr3[][3] = {
     {2, 60, 110},
-    {8, 90, 40}
+    {8, 60, 110}
   };
   
   moveServos(
@@ -376,7 +376,7 @@ void rotateLeft() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr4[][3] = {
     {4, 60, 105},
-    {6, 110, 70}
+    {6, 40, 80}
   };
 
   moveServos(
@@ -387,8 +387,8 @@ void rotateLeft() {
   
   // front left, back right - inner servos (swivel)
   int servoGroupArr5[][3] = {
-    {3, 100, 75},
-    {5, 130, 85}
+    {3, 90, 65},
+    {5, 115, 85}
   };
 
   moveServos(
@@ -400,7 +400,7 @@ void rotateLeft() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr6[][3] = {
     {4, 105, 60},
-    {6, 70, 110}
+    {6, 80, 40}
   };
 
   moveServos(
@@ -417,10 +417,10 @@ void rotateAllLegsLeft() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr[][3] = {
-    {1, 110, 80},
-    {7, 105, 65},
-    {3, 125, 100},
-    {5, 175, 130}
+    {1, 120, 90},
+    {7, 105, 80},
+    {3, 115, 90},
+    {5, 175, 115}
   };
 
   moveServos(
@@ -436,7 +436,7 @@ void rotateRight() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr1[][3] = {
     {2, 110, 60},
-    {8, 40, 90}
+    {8, 110, 60}
   };
 
   moveServos(
@@ -447,8 +447,8 @@ void rotateRight() {
 
   // front right, back left - inner servos (swivel)
   int servoGroupArr2[][3] = {
-    {1, 80, 110},
-    {7, 65, 105}
+    {1, 90, 120},
+    {7, 80, 105}
   };
 
   moveServos(
@@ -460,7 +460,7 @@ void rotateRight() {
   // front right, back left - outer servos (pitch)
   int servoGroupArr3[][3] = {
     {2, 60, 110},
-    {8, 90, 40}
+    {8, 60, 110}
   };
   
   moveServos(
@@ -472,7 +472,7 @@ void rotateRight() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr4[][3] = {
     {4, 60, 105},
-    {6, 110, 70}
+    {6, 40, 80}
   };
 
   moveServos(
@@ -483,8 +483,8 @@ void rotateRight() {
   
   // front left, back right - inner servos (swivel)
   int servoGroupArr5[][3] = {
-    {3, 100, 125},
-    {5, 130, 175}
+    {3, 90, 115},
+    {5, 115, 175}
   };
 
   moveServos(
@@ -496,7 +496,7 @@ void rotateRight() {
   // front left, back right - outer servos (pitch)
   int servoGroupArr6[][3] = {
     {4, 105, 60},
-    {6, 70, 110}
+    {6, 80, 40}
   };
 
   moveServos(

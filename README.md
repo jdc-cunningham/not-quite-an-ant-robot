@@ -1,3 +1,8 @@
+### Note:
+This branch has mainly servo position changing/flips as I had this "genius" idea of swapping the back legs, since the original was built wrong(both legs are forward, back set should point backwards).
+I did not realize that the inner servos are wrong then... and since the legs are glued to the servo spindle... yeah...
+This is a little better but not worth the effort, as mentioned this robot is generally trash, it was a proving ground for myself.
+
 # About
 My first legged robot. This was not really designed in terms of using math with regard to torque on servos/current draw/etc... as a result it works best on flat surfaces. The motion of the body is also not great since it can't really lift the legs straight up, rather just swing them out then in an arc to move. At this time I'm still working on the control system by phone, I have an ESP8266-01 and it has a websocket server that my phone connects to, then by serial between the ESP and Arduino I can send commands to run specific gaits to move the robot. At the moment I only have some forward gaits, I am still working on improving/writing better "abstractions" for the code eg. passing in an array of servos/ranges into a function to move the servos at the same time. Right now I just have a bunch of loops as a proof of concept.
 
