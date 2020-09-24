@@ -58,6 +58,10 @@ The servo speed is just set slow there, [here it is near full speed](https://www
 ## Total Unit cost estimate: $50.00
 (not including tools eg. 3D printer($200))
 
+### Note: can also use a 7.2v 2 cell battery
+After lowering the voltage the servos operated at, it can run on a 2 cell li-ion, I'm using a 2 cell 2600mAh now. It's much lighter(<3oz vs. 6oz)
+That gives some extra weight that could be carried.
+
 # Schematic
 
 ![ms paint wiring diagram](./robot/schematic.png)
